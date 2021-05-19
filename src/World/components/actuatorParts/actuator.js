@@ -6,11 +6,11 @@ async function loadModel() {
 
   const [tubeData, rodData, puckData, flowDataA, flowDataB] = await Promise.all(
     [
-      loader.loadAsync("/assets/models/TUBE.glb"),
-      loader.loadAsync("/assets/models/ROD.glb"),
-      loader.loadAsync("/assets/models/PUCK.glb"),
-      loader.loadAsync("/assets/models/AS-FS_A.glb"),
-      loader.loadAsync("/assets/models/AS-FS_B.glb"),
+      loader.loadAsync("./assets/models/TUBE.glb"),
+      loader.loadAsync("./assets/models/ROD.glb"),
+      loader.loadAsync("./assets/models/PUCK.glb"),
+      loader.loadAsync("./assets/models/AS-FS_A.glb"),
+      loader.loadAsync("./assets/models/AS-FS_B.glb"),
 
       // loader.loadAsync("/assests/models/AS-FS MINI PANEL_v1.glb"),
       // loader.loadAsync("/assests/models/ASPART OCC TEXTURES 20X300.glb"),
