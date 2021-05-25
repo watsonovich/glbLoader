@@ -9,14 +9,9 @@ import { createLights } from "./components/lights.js";
 import { createScene } from "./components/scene.js";
 import { createControls } from "./systems/controls.js";
 import { createRenderer } from "./systems/renderer.js";
+import { createEnvironment } from "./components/environment.js";
 import { Resizer } from "./systems/Resizer.js";
 import { Loop } from "./systems/Loop.js";
-
-//temporary to try the environment map
-// import { createEnvironment } from "./components/environment.js";
-import { UnsignedByteType } from "https://unpkg.com/three@0.126.1/build/three.module.js";
-import { PMREMGenerator } from "https://unpkg.com/three@0.126.1/src/extras/PMREMGenerator.js";
-import { RGBELoader } from "https://unpkg.com/three@0.126.1/examples/jsm/loaders/RGBELoader.js";
 
 //create module scoped variables not accessible outside the World app
 
@@ -36,20 +31,8 @@ class World {
     container.append(renderer.domElement);
     controls = createControls(camera, renderer.domElement);
 
-    // Create the env. map using hdr image.
-
-    const pmremGenerator = new PMREMGenerator(renderer);
-    pmremGenerator.compileEquirectangularShader();
-    new RGBELoader()
-      .setDataType(UnsignedByteType)
-      .load("./assets/textures/abandoned_workshop_2k.hdr", function (texture) {
-        var envMap = pmremGenerator.fromEquirectangular(texture).texture;
-
-        scene.environment = envMap;
-
-        texture.dispose();
-        pmremGenerator.dispose();
-      });
+    // Create the env. map which uses an hdr image.
+    createEnvironment(renderer, scene);
 
     // declare and create lights for the scene
 
@@ -76,9 +59,11 @@ class World {
   async init() {
     const { tube, rod, puck, flowControlA, flowControlB } = await loadModel();
 
-    puck.visible = true;
-    tube.metalness = 0.1;
-    tube.roughness = 0.5;
+    // puck.visible = false;
+
+    document.getElementById("puck").addEventListener("click", function () {
+      puck.visible = !puck.visible;
+    });
 
     scene.add(tube, rod, puck, flowControlA, flowControlB);
   }

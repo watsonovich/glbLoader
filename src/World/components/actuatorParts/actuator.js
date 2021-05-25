@@ -24,11 +24,11 @@ async function loadModel() {
   // tube.scale.set(0.01, 0.01, 0.01);
 
   const rod = setupModel(rodData);
-  // rod.position.set(0, 0, 0);
+  // rod.position.set(-.05, 0, 0);
   // rod.scale.set(0.01, 0.01, 0.01);
 
   const puck = setupModel(puckData);
-  // puck.position.set(0, 0, 0);
+  // puck.position.set(-.1, 0, 0);
   // puck.scale.set(0.01, 0.01, 0.01);
 
   const flowControlA = setupModel(flowDataA);

@@ -7,7 +7,7 @@ function createScene() {
   const scene = new Scene();
 
   //set background color
-  scene.background = new Color("skyblue");
+  scene.background = new Color("whitesmoke");
   return scene;
 }
 
