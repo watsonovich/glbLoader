@@ -10,9 +10,9 @@ function createControls(camera, canvas) {
 
   // this.controls.autoRotate = true;
   controls.enableDamping = true;
-  controls.dampingFactor = 0.3;
+  controls.dampingFactor = 0.35;
 
-  controls.target.y = 0.1;
+  controls.target.y = 0.15;
 
   controls.tick = () => controls.update();
 

@@ -53,19 +53,35 @@ class World {
     scene.add(ambientLight, mainLight, hemiLight, recLight, frontLight);
 
     const resizer = new Resizer(container, camera, renderer);
-    scene.add(createAxesHelper(), createGridHelper());
+
+    const grid = createGridHelper();
+    const axes = createAxesHelper();
+    scene.add(axes, grid);
+
+    axes.visible = false;
+    grid.visible = false;
+
+    document
+      .getElementById("helperhide")
+      .addEventListener("click", function () {
+        axes.visible = !axes.visible;
+        grid.visible = !grid.visible;
+      });
   }
 
   async init() {
-    const { tube, rod, puck, flowControlA, flowControlB } = await loadModel();
+    const { tube, rod, puck, flowControlA, flowControlB, backPanel, secTube } =
+      await loadModel();
 
     // puck.visible = false;
+    secTube.visible = false;
 
-    document.getElementById("puck").addEventListener("click", function () {
-      puck.visible = !puck.visible;
+    document.getElementById("tubehide").addEventListener("click", function () {
+      tube.visible = !tube.visible;
+      secTube.visible = !secTube.visible;
     });
 
-    scene.add(tube, rod, puck, flowControlA, flowControlB);
+    scene.add(tube, rod, puck, flowControlA, flowControlB, backPanel, secTube);
   }
 
   // render the scene

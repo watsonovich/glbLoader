@@ -38,16 +38,24 @@ h1 {
   background-color: whitesmoke;
 }
 
-.puck {
+.button {
   position: absolute;
   z-index: 1;
   width: 80px;
   height: 50px;
   background-color: dodgerblue;
   color: whitesmoke;
-  top: 80px;
   left: 20px;
   border-radius: 10px;
   font-weight: bold;
   box-shadow: 5px 5px 2px grey;
+}
+
+#tubehide {
+  position: absolute;
+  top: 70px;
+}
+
+#helperhide {
+  top: 130px;
 }
