@@ -70,7 +70,7 @@ class World {
   }
 
   async init() {
-    const { tube, rod, puck, flowControlA, flowControlB, backPanel, secTube } =
+    const { tube, rod, puck, flowControlA, flowControlB, secTube } =
       await loadModel();
 
     // puck.visible = false;
@@ -81,9 +81,26 @@ class World {
       secTube.visible = !secTube.visible;
     });
 
-    scene.add(tube, rod, puck, flowControlA, flowControlB, backPanel, secTube);
-  }
+    scene.add(tube, rod, puck, flowControlA, flowControlB, secTube);
 
+    const rodHome = function () {
+      rod.position.set(0, 0, 0);
+      puck.position.set(0, 0, 0);
+    };
+
+    const rodOut = function () {
+      rod.position.set(-0.1, 0, 0);
+      puck.position.set(-0.1, 0, 0);
+    };
+
+    document.getElementById("extend").addEventListener("click", function () {
+      rodOut();
+    });
+
+    document.getElementById("retract").addEventListener("click", function () {
+      rodHome();
+    });
+  }
   // render the scene
   render() {
     renderer.render(scene, camera);

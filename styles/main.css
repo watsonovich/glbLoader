@@ -43,12 +43,12 @@ h1 {
   z-index: 1;
   width: 80px;
   height: 50px;
-  background-color: dodgerblue;
+  background-color: rgb(103, 106, 109);
   color: whitesmoke;
   left: 20px;
   border-radius: 10px;
   font-weight: bold;
-  box-shadow: 5px 5px 2px grey;
+  box-shadow: 3px 3px 2px grey;
 }
 
 #tubehide {
@@ -58,4 +58,16 @@ h1 {
 
 #helperhide {
   top: 130px;
+}
+
+#extend {
+  position: absolute;
+  background-color: green;
+  top: 190px;
+}
+
+#retract {
+  position: absolute;
+  background-color: red;
+  top: 250px;
 }
